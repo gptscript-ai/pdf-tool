@@ -1,0 +1,5 @@
+Name: aws_textract
+Description: Use AWS Textract to get content out of PDF files
+Params: s3_url: the bucket in s3://<bucket>/<content> format.
+
+#!/usr/bin/env python ${GPTSCRIPT_TOOLS_DIR}/tool.py

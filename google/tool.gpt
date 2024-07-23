@@ -1,0 +1,6 @@
+Name: google_pdf_vision_ocr
+Description: Convert PDF to images and use Google vision OCR to parse out text info.
+Params: file_path: path to the pdf file to analyze.
+Params: max_tokens: the number of tokens to have created by the LLM. Default 300.
+
+#!/usr/bin/env python ${GPTSCRIPT_TOOLS_DIR}/tool.py

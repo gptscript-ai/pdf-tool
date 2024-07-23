@@ -1,0 +1,7 @@
+Name: azure_computer_vision_ocr
+Description: Uses Azure computer vision to extract text information from PDFS
+Credentials: github.com/gptscript-ai/credential as azureVisionKey with "Please enter Azure Vision key" as message and key as field and "AZURE_COMPUTER_VISION_KEY" as env
+Credentials: github.com/gptscript-ai/credential as azureVisionEndpoint with "Please enter Azure Vision Endpoint" as message and endpoint as field and "AZURE_COMPUTER_VISION_ENDPOINT" as env
+Params: file_path: path to the PDF file on disk
+
+#!/usr/bin/env python ${GPTSCRIPT_TOOLS_DIR}/tool.py
