@@ -3,4 +3,4 @@ Description: Convert PDF to images and use Google vision OCR to parse out text i
 Params: file_path: path to the pdf file to analyze.
 Params: max_tokens: the number of tokens to have created by the LLM. Default 300.
 
-#!/usr/bin/env python ${GPTSCRIPT_TOOLS_DIR}/tool.py
+#!/usr/bin/env python ${GPTSCRIPT_TOOL_DIR}/tool.py

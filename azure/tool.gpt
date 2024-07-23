@@ -4,4 +4,4 @@ Credentials: github.com/gptscript-ai/credential as azureVisionKey with "Please e
 Credentials: github.com/gptscript-ai/credential as azureVisionEndpoint with "Please enter Azure Vision Endpoint" as message and endpoint as field and "AZURE_COMPUTER_VISION_ENDPOINT" as env
 Params: file_path: path to the PDF file on disk
 
-#!/usr/bin/env python ${GPTSCRIPT_TOOLS_DIR}/tool.py
+#!/usr/bin/env python ${GPTSCRIPT_TOOL_DIR}/tool.py

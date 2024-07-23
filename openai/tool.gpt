@@ -5,4 +5,4 @@ Params: file_path: path to the pdf file to analyze.
 Params: prompt: information to extract from the PDF
 Params: max_tokens: the number of tokens to have created by the LLM. Default 300.
 
-#!/usr/bin/env python ${GPTSCRIPT_TOOLS_DIR}/tool.py
+#!/usr/bin/env python ${GPTSCRIPT_TOOL_DIR}/tool.py
