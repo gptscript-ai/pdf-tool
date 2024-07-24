@@ -30,6 +30,7 @@ def encode_image(image):
 def send_image_to_openai(prompt, base64_image, api_key):
     """Sends the base64 image to OpenAI for analysis."""
     headers = {"Content-Type": "application/json", "Authorization": f"Bearer {api_key}"}
+    max_tokens = os.getenv("max_tokens", 300)
 
     payload = {
         "model": "gpt-4o",
@@ -45,7 +46,7 @@ def send_image_to_openai(prompt, base64_image, api_key):
                 ],
             }
         ],
-        "max_tokens": os.getenv("max_tokens", 300),
+        "max_tokens": int(max_tokens),
     }
 
     response = requests.post(
