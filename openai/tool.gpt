@@ -1,4 +1,3 @@
-Chat: true
 Name: pdf_vision
 Description: Convert PDF to images and use gpt4 vision to parse out text info.
 Params: file_path: path to the pdf file to analyze.
