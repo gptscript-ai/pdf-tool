@@ -1,6 +1,8 @@
 Name: google_pdf_vision_ocr
 Description: Convert PDF to images and use Google vision OCR to parse out text info.
+Credentials: ./credential.gpt
 Params: file_path: path to the pdf file to analyze.
 Params: max_tokens: the number of tokens to have created by the LLM. Default 300.
+Params: key_words: comma separated list of key words that you want extracted as kv pairs.
 
 #!/usr/bin/env python ${GPTSCRIPT_TOOL_DIR}/tool.py

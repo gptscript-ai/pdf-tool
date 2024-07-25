@@ -52,16 +52,9 @@ def extract_text_annotations(text_annotation):
     return extracted_text
 
 
-def find_key_value_pairs(text_annotation):
+def find_key_value_pairs(text_annotation, key_words=None):
     """Finds key-value pairs in the text annotation."""
     key_value_pairs = []
-    key_words = [
-        "State",
-        "Name",
-        "Address",
-        "Date",
-        "Signature",
-    ]  # Add more keys as needed
 
     for page in text_annotation.pages:
         for block in page.blocks:
@@ -113,17 +106,40 @@ def extract_handwritten_responses(image, key_value_pairs, vision_client):
     return responses
 
 
+def check_credentials():
+    credentials, project = google.auth.default()
+    if not credentials:
+        print(
+            "No credentials found. Please run 'gcloud auth application-default login'."
+        )
+        exit(1)
+
+    # Make a low-cost API call to verify the credentials
+    try:
+        vision_client = vision.ImageAnnotatorClient(credentials=credentials)
+        # Making a low-cost API call to list locations
+        vision_client.get_project_location("projects/{}".format(project))
+    except Exception as e:
+        print(
+            "Invalid or expired credentials. Please run 'gcloud auth application-default login'."
+        )
+        print(f"Error: {e}")
+        exit(1)
+
+    return vision_client
+
+
 def main():
     pdf_path = os.getenv("file_path")
-    prompt = os.getenv("prompt", "What is in this image?")
+    key_words_string = os.getenv("key_words", "")
+    key_words = [kw.strip() for kw in key_words_string.split(",") if kw.strip()]
 
     if not pdf_path:
         print("Environment variable 'file_path' not set.")
         return
 
     # Initialize the Vision API client using Application Default Credentials
-    credentials, project = google.auth.default()
-    vision_client = vision.ImageAnnotatorClient(credentials=credentials)
+    vision_client = check_credentials()
 
     images = convert_pdf_to_images(pdf_path)
     for i, image in enumerate(images):
@@ -133,7 +149,7 @@ def main():
 
         if text_annotation:
             extracted_text = extract_text_annotations(text_annotation)
-            key_value_pairs = find_key_value_pairs(text_annotation)
+            key_value_pairs = find_key_value_pairs(text_annotation, key_words)
             handwritten_responses = extract_handwritten_responses(
                 image, key_value_pairs, vision_client
             )
