@@ -118,7 +118,7 @@ def check_credentials():
     try:
         vision_client = vision.ImageAnnotatorClient(credentials=credentials)
         # Making a low-cost API call to list locations
-        vision_client.get_project_location("projects/{}".format(project))
+        vision_client.batch_annotate_images(requests=[])
     except Exception as e:
         print(
             "Invalid or expired credentials. Please run 'gcloud auth application-default login'."
