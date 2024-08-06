@@ -1,5 +1,6 @@
 Name: pdf_vision
 Description: Convert PDF to images and use gpt4 vision to parse out text info.
+credential: github.com/gptscript-ai/credential as sys.openai with OPENAI_API_KEY as env and "Please provide your OpenAI API key" as message and key as field
 Params: file_path: path to the pdf file to analyze.
 Params: prompt: information to extract from the PDF
 Params: max_tokens: integer value of tokens to have created by the LLM. Default 300.
