@@ -62,7 +62,7 @@ def extract_data_from_result(results):
 
 
 def main():
-    pdf_path = os.getenv("file_path")
+    pdf_path = os.getenv("FILE_PATH")
     endpoint = os.getenv("AZURE_COMPUTER_VISION_ENDPOINT")
     key = os.getenv("AZURE_COMPUTER_VISION_KEY")
 

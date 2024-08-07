@@ -56,7 +56,7 @@ def send_image_to_openai(prompt, base64_image, api_key):
 
 
 def main():
-    pdf_path = os.getenv("file_path")
+    pdf_path = os.getenv("FILE_PATH")
     api_key = os.getenv("OPENAI_API_KEY")
     prompt = os.getenv("prompt", "What is in this image?")
 

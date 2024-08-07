@@ -97,7 +97,7 @@ def extract_data_from_result(response):
 
 
 def main():
-    s3_uri = os.getenv("s3_uri")
+    s3_uri = os.getenv("S3_URI")
 
     if not s3_uri:
         print("Environment variable 'S3_URI' not set.")
