@@ -130,12 +130,12 @@ def check_credentials():
 
 
 def main():
-    pdf_path = os.getenv("file_path")
-    key_words_string = os.getenv("key_words", "")
+    pdf_path = os.getenv("FILE_PATH")
+    key_words_string = os.getenv("KEY_WORDS", "")
     key_words = [kw.strip() for kw in key_words_string.split(",") if kw.strip()]
 
     if not pdf_path:
-        print("Environment variable 'file_path' not set.")
+        print("Environment variable 'FILE_PATH' not set.")
         return
 
     # Initialize the Vision API client using Application Default Credentials
