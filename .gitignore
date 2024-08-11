@@ -1,2 +1,6 @@
 **/venv
 **/.DS_Store
+example.gpt
+**/local_tool.gpt
+**/.idea/
+**/.vscode/
