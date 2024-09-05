@@ -30,7 +30,7 @@ def encode_image(image):
 def send_image_to_openai(prompt, base64_image, api_key):
     """Sends the base64 image to OpenAI for analysis."""
     headers = {"Content-Type": "application/json", "Authorization": f"Bearer {api_key}"}
-    max_tokens = os.getenv("max_tokens", 300)
+    max_tokens = os.getenv("MAX_TOKENS", 300)
 
     payload = {
         "model": "gpt-4o",
@@ -58,10 +58,10 @@ def send_image_to_openai(prompt, base64_image, api_key):
 def main():
     pdf_path = os.getenv("FILE_PATH")
     api_key = os.getenv("OPENAI_API_KEY")
-    prompt = os.getenv("prompt", "What is in this image?")
+    prompt = os.getenv("PROMPT", "What is in this image?")
 
     if not pdf_path:
-        print("Environment variable 'file_path' not set.")
+        print("Environment variable 'FILE_PATH' not set.")
         return
 
     if not api_key:
