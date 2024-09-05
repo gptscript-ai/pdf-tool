@@ -8,13 +8,15 @@ import os
 import requests
 
 
-def convert_pdf_to_images(pdf_path):
+def convert_pdf_to_images(pdf_path, dpi=300):
     """Converts each page of the PDF to an image."""
     doc = fitz.open(pdf_path)
     images = []
     for page_num in range(len(doc)):
         page = doc.load_page(page_num)
-        pix = page.get_pixmap()
+        zoom = dpi / 72
+        mat = fitz.Matrix(zoom, zoom)
+        pix = page.get_pixmap(matrix=mat)
         img = Image.frombytes("RGB", [pix.width, pix.height], pix.samples)
         images.append(img)
     return images
