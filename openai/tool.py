@@ -51,10 +51,20 @@ def send_image_to_openai(prompt, base64_image, api_key):
         "max_tokens": int(max_tokens),
     }
 
-    response = requests.post(
-        "https://api.openai.com/v1/chat/completions", headers=headers, json=payload
-    )
-    return response.json()
+    try:
+        # Make the POST request to the OpenAI API
+        response = requests.post(
+            "https://api.openai.com/v1/chat/completions", headers=headers, json=payload
+        )
+        # Try to extract the required fields from the response JSON
+        resp_object = (
+            response.json().get("choices", [{}])[0].get("message", {}).get("content")
+        )
+        return resp_object
+    except (requests.RequestException, IndexError, AttributeError, ValueError) as e:
+        # Handle potential network issues, missing keys, or invalid JSON
+        print(f"Error occurred: {e}")
+        return None
 
 
 def main():
